@@ -807,7 +807,8 @@ return [
                 ],
 
                 'categories' => [
-                    'title' => 'Kategorien',
+                    'category-details' => 'Klicken Sie auf Ordner, um Unterordner zu erhalten',
+                    'title'            => 'Kategorien',
                 ],
 
                 'images' => [
@@ -1234,6 +1235,7 @@ return [
                 'back-btn'                 => 'Zurück',
                 'banner'                   => 'Banner',
                 'banner-size'              => 'Banner-Seitenverhältnis (1320px X 300px)',
+                'category-details'         => 'Klicken Sie auf Ordner, um Unterordner zu erhalten',
                 'description'              => 'Beschreibung',
                 'description-and-images'   => 'Beschreibung und Bilder',
                 'description-only'         => 'Nur Beschreibung',
@@ -1266,6 +1268,7 @@ return [
                 'back-btn'                 => 'Zurück',
                 'banner'                   => 'Banner',
                 'banner-size'              => 'Banner-Seitenverhältnis (1320px X 300px)',
+                'category-details'         => 'Klicken Sie auf Ordner, um Unterordner zu erhalten',
                 'description'              => 'Beschreibung',
                 'description-and-images'   => 'Beschreibung und Bilder',
                 'description-only'         => 'Nur Beschreibung',

@@ -807,7 +807,8 @@ return [
                 ],
 
                 'categories' => [
-                    'title' => 'Kategorie',
+                    'category-details' => 'Kliknij na foldery, aby uzyskać podfolder',
+                    'title'            => 'Kategorie',
                 ],
 
                 'images' => [
@@ -1234,6 +1235,7 @@ return [
                 'back-btn'                 => 'Powrót',
                 'banner'                   => 'Baner',
                 'banner-size'              => 'Proporcje banera (1320px X 300px)',
+                'category-details'         => 'Kliknij na foldery, aby uzyskać podfolder',
                 'description'              => 'Opis',
                 'description-and-images'   => 'Opis i Obrazy',
                 'description-only'         => 'Tylko Opis',
@@ -1266,6 +1268,7 @@ return [
                 'back-btn'                 => 'Powrót',
                 'banner'                   => 'Baner',
                 'banner-size'              => 'Proporcje banera (1320px X 300px)',
+                'category-details'         => 'Kliknij na foldery, aby uzyskać podfolder',
                 'description'              => 'Opis',
                 'description-and-images'   => 'Opis i Obrazy',
                 'description-only'         => 'Tylko Opis',

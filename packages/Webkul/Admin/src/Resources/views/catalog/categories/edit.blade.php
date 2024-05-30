@@ -128,9 +128,14 @@
                     @if ($categories->count())
                         <div>
                             <!-- Parent category -->
-                            <label class="mb-2.5 block text-xs font-medium leading-6 text-gray-800 dark:text-white">
+                            <label class="mb-1 block text-xs font-medium leading-6 text-gray-800 dark:text-white">
                                 @lang('admin::app.catalog.categories.edit.select-parent-category')
                             </label>
+
+                            <!-- Parent category info -->
+                            <p class="mb-2 block text-xs text-gray-500">
+                                @lang('admin::app.catalog.categories.edit.category-details')
+                            </p>
 
                             <!-- Radio select button -->
                             <div class="flex flex-col gap-3">
@@ -142,6 +147,7 @@
                                     :items="json_encode($categories)"
                                     :value="json_encode($category->parent_id)"
                                     :fallback-locale="config('app.fallback_locale')"
+                                    on-click="true"
                                 >
                                 </x-admin::tree.view>
                             </div>

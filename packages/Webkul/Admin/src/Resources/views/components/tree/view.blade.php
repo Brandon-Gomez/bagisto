@@ -91,6 +91,12 @@
                     required: false,
                     default: false
                 },
+
+                onClick: {
+                    type: String,
+                    required: false,
+                    default: false
+                },
             },
 
             data() {
@@ -209,24 +215,26 @@
                                         this.collapse ? '' : 'active',
                                         'v-tree-item inline-block w-full [&>.v-tree-item]:ltr:pl-6 [&>.v-tree-item]:rtl:pr-6 [&>.v-tree-item]:hidden [&.active>.v-tree-item]:block',
                                         level === 1 && ! hasChildren
-                                            ? 'ltr:!pl-5 rtl:!pr-5'
+                                            ? 'ltr:!pl-0 rtl:!pr-0'
                                             : level > 1 && ! hasChildren
-                                            ? 'ltr:!pl-14 rtl:!pr-14'
+                                            ? 'ltr:pl-5 rtl:pr-5'
                                             : '',
                                     ],
                                 }, [
                                     this.generateToggleIconComponent({
                                         class: [
-                                            hasChildren ? 'icon-sort-down' : '',
+                                            this.onClick && !hasChildren ? 'icon-sort-down' : (hasChildren ? 'icon-sort-down' : ''),
                                             'text-xl rounded-md cursor-pointer transition-all hover:bg-gray-100 dark:hover:bg-gray-950'
                                         ],
                                     }),
 
                                     this.generateFolderIconComponent({
-                                        class: [
-                                            hasChildren ? 'icon-folder' : 'icon-attribute',
-                                            'text-2xl cursor-pointer'
-                                        ],
+                                        class: 'icon-folder text-2xl cursor-pointer',
+                                        onClick: (event) => {
+                                            if (this.onClick && !hasChildren) {
+                                                this.getSubtree(items[key], event);
+                                            }
+                                        },
                                     }),
 
                                     this.generateInputComponent({
@@ -243,6 +251,28 @@
                     }
 
                     return treeItems;
+                },
+
+                getSubtree(value, event) {
+                    const image = document.createElement('img');
+                    image.classList.add('ml-3', 'h-5', 'w-5', 'animate-spin');
+                    image.src = '{{ bagisto_asset("images/spinner.svg") }}';
+
+                    event.target.nextElementSibling.lastChild.insertAdjacentElement("afterend", image);
+
+                    this.$axios.get(`{{ route('admin.catalog.categories.get_child_tree', '') }}/${value.id}`)
+                        .then(response => {
+                            value.children = response.data;
+
+                            image.remove();
+
+                            if (! value.children.length && event.srcElement.previousSibling) {
+                                event.srcElement.previousSibling.style.visibility = 'hidden';
+                            }
+                        })
+                        .catch(error => {
+                            this.$emitter.emit('add-flash', { type: 'danger', message: error.message });
+                        });
                 },
 
                 generateTree() {

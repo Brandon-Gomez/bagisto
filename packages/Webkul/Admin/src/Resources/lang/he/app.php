@@ -807,7 +807,8 @@ return [
                 ],
 
                 'categories' => [
-                    'title' => 'קטגוריות',
+                    'category-details' => 'לחץ על תיקיות כדי לקבל תת תיקיות',
+                    'title'            => 'קטגוריות',
                 ],
 
                 'images' => [
@@ -1234,6 +1235,7 @@ return [
                 'back-btn'                 => 'חזור',
                 'banner'                   => 'באנר',
                 'banner-size'              => 'יחס הגובה לרוחב של הבאנר (1320px X 300px)',
+                'category-details'         => 'לחץ על תיקיות כדי לקבל תת תיקיות',
                 'description'              => 'תיאור',
                 'description-and-images'   => 'תיאור ותמונות',
                 'description-only'         => 'תיאור בלבד',
@@ -1266,6 +1268,7 @@ return [
                 'back-btn'                 => 'חזור',
                 'banner'                   => 'באנר',
                 'banner-size'              => 'יחס הגובה לרוחב של הבאנר (1320px X 300px)',
+                'category-details'         => 'לחץ על תיקיות כדי לקבל תת תיקיות',
                 'description'              => 'תיאור',
                 'description-and-images'   => 'תיאור ותמונות',
                 'description-only'         => 'תיאור בלבד',

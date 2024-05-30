@@ -3,8 +3,12 @@
 <!-- Panel -->
 <div class="box-shadow rounded bg-white p-4 dark:bg-gray-900">
     <!-- Panel Header -->
-    <p class="mb-4 flex justify-between text-base font-semibold text-gray-800 dark:text-white">
+    <p class="mb-2 flex justify-between text-base font-semibold text-gray-800 dark:text-white">
         @lang('admin::app.catalog.products.edit.categories.title')
+    </p>
+
+    <p class="mb-2 block text-xs text-gray-500">
+        @lang('admin::app.catalog.products.edit.categories.category-details')
     </p>
 
     {!! view_render_event('bagisto.admin.catalog.product.edit.form.categories.controls.before', ['product' => $product]) !!}
@@ -43,6 +47,7 @@
                     ::items="categories"
                     :value="json_encode($product->categories->pluck('id'))"
                     :fallback-locale="config('app.fallback_locale')"
+                    on-click="true"
                 >
                 </x-admin::tree.view>
             </template>

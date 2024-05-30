@@ -50,7 +50,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $categories = $this->categoryRepository->getCategoryTree(null, ['id']);
+        $categories = $this->categoryRepository->getCategoryTree();
 
         $attributes = $this->attributeRepository->findWhere(['is_filterable' => 1]);
 
@@ -269,6 +269,16 @@ class CategoryController extends Controller
         $categories = $this->categoryRepository->getVisibleCategoryTree(core()->getCurrentChannel()->root_category_id);
 
         return CategoryTreeResource::collection($categories);
+    }
+
+    /**
+     * Get all sub categories of specific category.
+     */
+    public function getChildTree(int $id)
+    {
+        $categories = $this->categoryRepository->getCategorySubTree($id);
+
+        return $categories;
     }
 
     /**

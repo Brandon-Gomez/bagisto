@@ -807,7 +807,8 @@ return [
                 ],
 
                 'categories' => [
-                    'title' => 'श्रेणियाँ',
+                    'category-details' => 'उपफ़ोल्डर प्राप्त करने के लिए फ़ोल्डर पर क्लिक करें',
+                    'title'            => 'श्रेणियाँ',
                 ],
 
                 'images' => [
@@ -1234,6 +1235,7 @@ return [
                 'back-btn'                 => 'पीछे',
                 'banner'                   => 'बैनर',
                 'banner-size'              => 'बैनर पुनर्विचलन (1320px X 300px)',
+                'category-details'         => 'उपफ़ोल्डर प्राप्त करने के लिए फ़ोल्डर पर क्लिक करें',
                 'description'              => 'विवरण',
                 'description-and-images'   => 'विवरण और छवियाँ',
                 'description-only'         => 'केवल विवरण',
@@ -1266,6 +1268,7 @@ return [
                 'back-btn'                 => 'पीछे',
                 'banner'                   => 'बैनर',
                 'banner-size'              => 'बैनर पुनर्विचलन (1320px X 300px)',
+                'category-details'         => 'उपफ़ोल्डर प्राप्त करने के लिए फ़ोल्डर पर क्लिक करें',
                 'description'              => 'विवरण',
                 'description-and-images'   => 'विवरण और छवियाँ',
                 'description-only'         => 'केवल विवरण',

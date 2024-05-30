@@ -129,27 +129,61 @@ class CategoryRepository extends Repository
     /**
      * Specify category tree.
      *
-     * @param  int  $id
      * @return \Webkul\Category\Contracts\Category
      */
-    public function getCategoryTree($id = null)
+    public function getCategoryTree(?int $id = null)
     {
         return $id
             ? $this->model::orderBy('position', 'ASC')->where('id', '!=', $id)->get()->toTree()
-            : $this->model::orderBy('position', 'ASC')->get()->toTree();
+            : $this->model::orderBy('position', 'ASC')
+                ->where(function ($query) {
+                    $query->where('parent_id', 1)
+                        ->orWhere('id', 1);
+                })->get()->toTree();
     }
 
     /**
      * Specify category tree.
      *
-     * @param  int  $id
      * @return \Illuminate\Support\Collection
      */
-    public function getCategoryTreeWithoutDescendant($id = null)
+    public function getCategoryTreeWithoutDescendant(?int $id = null)
     {
-        return $id
-            ? $this->model::orderBy('position', 'ASC')->where('id', '!=', $id)->whereNotDescendantOf($id)->get()->toTree()
-            : $this->model::orderBy('position', 'ASC')->get()->toTree();
+        if (! $id) {
+            return $this->model::where('status', 1)
+                ->orderBy('position', 'ASC')
+                ->get()->toTree();
+        }
+
+        $category = $this->model::orderBy('position', 'ASC')
+            ->whereNotDescendantOf($id)
+            ->get();
+
+        if ($id == 1) {
+            return $category->where('id', '!=', $id)->toTree();
+        }
+
+        $primaryParentId = $category->where('id', $id)->value('parent_id');
+        $allParentIds = [$primaryParentId, null];
+
+        while ($primaryParentId) {
+            $primaryParentId = $category->where('id', $primaryParentId)->value('parent_id');
+            $allParentIds[] = $primaryParentId;
+        }
+
+        return $category->whereIn('parent_id', $allParentIds)
+            ->where('id', '!=', $id)
+            ->toTree();
+    }
+
+    /**
+     * Specify category sub tree.
+     *
+     * @return \Webkul\Category\Contracts\Category
+     */
+    public function getCategorySubTree(int $id)
+    {
+        return $this->model::orderBy('position', 'ASC')->where('parent_id', '=', $id)->get()->toTree();
     }
 
     /**
@@ -175,10 +209,9 @@ class CategoryRepository extends Repository
     /**
      * get visible category tree.
      *
-     * @param  int  $id
      * @return \Illuminate\Support\Collection
      */
-    public function getVisibleCategoryTree($id = null)
+    public function getVisibleCategoryTree(?int $id = null)
     {
         return $id
             ? $this->model::orderBy('position', 'ASC')->where('status', 1)->descendantsAndSelf($id)->toTree($id)

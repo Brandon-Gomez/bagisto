@@ -88,9 +88,14 @@
 
                     <div>
                         <!-- Parent category -->
-                        <label class="mb-2.5 block text-xs font-medium leading-6 text-gray-800 dark:text-white">
+                        <label class="mb-1 block text-xs font-medium leading-6 text-gray-800 dark:text-white">
                             @lang('admin::app.catalog.categories.create.parent-category')
                         </label>
+
+                        <!-- Parent category info -->
+                        <p class="mb-2 block text-xs text-gray-500">
+                            @lang('admin::app.catalog.categories.create.category-details')
+                        </p>
 
                         <!-- Radio select button -->
                         <div class="flex flex-col gap-3">
@@ -101,6 +106,7 @@
                                 value-field="id"
                                 :items="json_encode($categories)"
                                 :fallback-locale="config('app.fallback_locale')"
+                                on-click="true"
                             />
                         </div>
                     </div>

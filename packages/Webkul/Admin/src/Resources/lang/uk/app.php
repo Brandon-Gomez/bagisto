@@ -807,7 +807,8 @@ return [
                 ],
 
                 'categories' => [
-                    'title' => 'Категорії',
+                    'category-details' => 'Клацніть на папки, щоб отримати підпапку',
+                    'title'            => 'Категорії',
                 ],
 
                 'images' => [
@@ -1234,6 +1235,7 @@ return [
                 'back-btn'                 => 'Назад',
                 'banner'                   => 'Банер',
                 'banner-size'              => 'Розмір банера (1320px X 300px)',
+                'category-details'         => 'Клацніть на папки, щоб отримати підпапку',
                 'description'              => 'Опис',
                 'description-and-images'   => 'Опис та Зображення',
                 'description-only'         => 'Лише Опис',
@@ -1266,6 +1268,7 @@ return [
                 'back-btn'                 => 'Назад',
                 'banner'                   => 'Банер',
                 'banner-size'              => 'Розмір банера (1320px X 300px)',
+                'category-details'         => 'Клацніть на папки, щоб отримати підпапку',
                 'description'              => 'Опис',
                 'description-and-images'   => 'Опис та Зображення',
                 'description-only'         => 'Лише Опис',

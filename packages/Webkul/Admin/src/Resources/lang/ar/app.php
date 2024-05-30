@@ -807,7 +807,8 @@ return [
                 ],
 
                 'categories' => [
-                    'title' => 'الفئات',
+                    'category-details' => 'انقر على المجلدات للحصول على المجلد الفرعي',
+                    'title'            => 'الفئات',
                 ],
 
                 'images' => [
@@ -1234,6 +1235,7 @@ return [
                 'back-btn'                 => 'رجوع',
                 'banner'                   => 'بانر',
                 'banner-size'              => 'نسبة البانر (1320px X 300px)',
+                'category-details'         => 'انقر على المجلدات للحصول على المجلد الفرعي',
                 'description'              => 'الوصف',
                 'description-and-images'   => 'الوصف والصور',
                 'description-only'         => 'الوصف فقط',
@@ -1266,6 +1268,7 @@ return [
                 'back-btn'                 => 'رجوع',
                 'banner'                   => 'بانر',
                 'banner-size'              => 'نسبة البانر (1320px X 300px)',
+                'category-details'         => 'انقر على المجلدات للحصول على المجلد الفرعي',
                 'description'              => 'الوصف',
                 'description-and-images'   => 'الوصف والصور',
                 'description-only'         => 'الوصف فقط',
