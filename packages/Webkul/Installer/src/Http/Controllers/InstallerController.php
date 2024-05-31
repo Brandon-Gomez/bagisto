@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Webkul\Installer\Helpers\DatabaseManager;
 use Webkul\Installer\Helpers\EnvironmentManager;
 use Webkul\Installer\Helpers\ServerRequirements;
@@ -128,6 +129,10 @@ class InstallerController extends Controller
         $password = password_hash(request()->input('password'), PASSWORD_BCRYPT, ['cost' => 10]);
 
         try {
+            if (request()->input('sample_products')) {
+                $this->databaseManager->seedSampleProducts();
+            }
+
             DB::table('admins')->updateOrInsert(
                 [
                     'id' => self::USER_ID,
@@ -158,5 +163,13 @@ class InstallerController extends Controller
         Event::dispatch('bagisto.installed');
 
         return $filePath;
+    }
+
+    /**
+     * Download import error report.
+     */
+    public function downloadSample()
+    {
+        return Storage::download('data-transfer/samples/products.csv');
     }
 }

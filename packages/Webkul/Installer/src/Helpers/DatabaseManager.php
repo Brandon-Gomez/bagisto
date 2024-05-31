@@ -7,9 +7,16 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Webkul\Installer\Database\Seeders\DatabaseSeeder as BagistoDatabaseSeeder;
+use Webkul\Installer\Database\Seeders\ImportsTableSeeder;
+use Webkul\Product\Repositories\ProductRepository;
 
 class DatabaseManager
 {
+    public function __construct(
+        protected ProductRepository $productRepository,
+    ) {
+    }
+
     /**
      * Check Database Connection.
      */
@@ -60,7 +67,6 @@ class DatabaseManager
                 'error' => $e->getMessage(),
             ], 500);
         }
-
     }
 
     /**
@@ -95,6 +101,24 @@ class DatabaseManager
         try {
             Artisan::call('key:generate');
         } catch (Exception $e) {
+        }
+    }
+
+    /**
+     * Generate fake product data.
+     *
+     * @return void|string
+     */
+    public function seedSampleProducts()
+    {
+        try {
+            app(ImportsTableSeeder::class)->run();
+        } catch (Exception $e) {
+            dd($e);
+
+            return response()->json([
+                'error' => $e->getMessage(),
+            ], 500);
         }
     }
 }
