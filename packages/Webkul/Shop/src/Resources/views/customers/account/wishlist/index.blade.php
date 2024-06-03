@@ -46,7 +46,7 @@
                                 <span class="icon-arrow-left rtl:icon-arrow-right text-2xl"></span>                                    
                             </a>
 
-                            <h2 class="text-2xl font-medium max-md:text-xl ltr:ml-2.5 md:ltr:ml-0 rtl:mr-2.5 md:rtl:mr-0">
+                            <h2 class="text-2xl font-medium max-md:text-base ltr:ml-2.5 md:ltr:ml-0 rtl:mr-2.5 md:rtl:mr-0">
                                 @lang('shop::app.customers.account.wishlist.page-title')
                             </h2>
                         </div>
@@ -173,7 +173,7 @@
 
                                                 <!--Wishlist Item Move-to-cart-->
                                                 <x-shop::button
-                                                    class="primary-button max-h-10 w-max rounded-2xl px-6 py-1.5 text-center text-base max-md:rounded-xl max-md:px-4 max-md:py-1.5 max-md:text-sm"
+                                                    class="primary-button max-h-10 w-max rounded-2xl px-6 py-1.5 text-center text-base max-md:rounded-lg max-md:px-4 max-md:py-1.5 max-md:text-sm"
                                                     :title="trans('shop::app.customers.account.wishlist.move-to-cart')"
                                                     ::loading="isMovingToCart[item.id]"
                                                     ::disabled="isMovingToCart[item.id]"
